@@ -19,7 +19,19 @@ const Home = () => {
       console.log(error)
     }
   }
-  
+
+  const addTodo:AddFn= async (text) => {
+    const newTodo = {
+      task: text,
+      isDone: false
+    }
+    try {
+      await axios.post(url,newTodo)
+      getTodos()
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   useEffect(()=>{
     getTodos()
@@ -28,7 +40,7 @@ const Home = () => {
 
   return (
     <div className='main'>
-      <InputForm  />
+      <InputForm addTodo={addTodo} />
       <TodoList todos={todos} />
     </div>
   )
