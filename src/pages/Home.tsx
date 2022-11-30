@@ -7,23 +7,23 @@ const url = "https://6352477ea9f3f34c3739206a.mockapi.io/todos";
 
 
 const Home = () => {
-  const [todos, setTodos] = useState<TodoType[]>([])
+  const [todos,setTodos] = useState<TodoType[]>([])
 
-  const getTodos = async()=> {
+  const getTodos = async () => {
     try {
-      const { data } = await axios.get(url);
+      const {data} = await axios.get<TodoType[]>(url)
+      console.log(data)
       setTodos(data)
-      console.log(data);
-      
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
-  // useEffect(() => {
-  //   getTodos()
-  // }, [])
+  useEffect(()=>{
+    getTodos()
+  },[])
   
+
   return (
     <div className='main'>
       <InputForm  />
