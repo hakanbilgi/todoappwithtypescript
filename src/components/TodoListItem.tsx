@@ -1,4 +1,10 @@
 import React from 'react';
+
+interface IListItem {
+  item:TodoType;
+  
+}
+
 const TodoListItem = () => {
   return (
     <li>
